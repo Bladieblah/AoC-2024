@@ -2,6 +2,7 @@ use itertools::Itertools;
 use std::ops::{ Add, Mul };
 
 fn solve(target: usize, cur: usize, inputs: &Vec<usize>, ops: &Vec<fn(usize, usize) -> usize>) -> usize {
+  if cur > target { return 0; }
   match inputs.len() {
     0 => if cur == target { cur } else { 0 }
     _ => {

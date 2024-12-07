@@ -56,5 +56,5 @@ fn main(input: &str) -> (usize, usize) {
     }
   });
 
-  valid.fold((0, 0), |(acc1, acc2), (v1, v2)| (acc1 + (v1 as usize), acc2 + (v2 as usize)))
+  valid.fold((0, 0), |acc, v| (acc.0 + (v.0 as usize), acc.1 + (v.1 as usize)))
 }
