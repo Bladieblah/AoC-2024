@@ -71,7 +71,7 @@ fn walk(grid: &mut Vec<Vec<u8>>, start: (usize, usize, usize), size: usize) -> (
   (visited, new_stones)
 }
 
-#[aoc23::main(06)]
+#[aoc24::main(06)]
 fn main(input: &str) -> (usize, usize) {
   let mut grid = input.split('\n').map(|line| line.as_bytes().to_vec()).collect_vec();
   let size = grid.len();

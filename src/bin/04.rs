@@ -51,7 +51,7 @@ fn find_masmas(chars: &Vec<&[u8]>, i: usize, j: usize) -> usize {
   }
 }
 
-#[aoc23::main(04)]
+#[aoc24::main(04)]
 fn main(input: &str) -> (usize, usize) {
   let chars = input
     .split('\n')

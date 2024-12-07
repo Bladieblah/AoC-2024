@@ -35,7 +35,7 @@ fn check_dampen(v: &Vec<i32>) -> bool {
   return false;
 }
 
-#[aoc23::main(02)]
+#[aoc24::main(02)]
 fn main(input: &str) -> (usize, usize) {
   let reports = input
     .split('\n')

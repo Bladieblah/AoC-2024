@@ -1,6 +1,6 @@
 use regex::Regex;
 
-#[aoc23::main(03)]
+#[aoc24::main(03)]
 fn main(input: &str) -> (usize, usize) {
   let mult_regex = Regex::new(r"(mul|do|don't)\((\d*),?(\d*)\)").unwrap();
 

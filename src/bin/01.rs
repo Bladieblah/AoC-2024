@@ -3,7 +3,7 @@ use std::iter::zip;
 use hashbrown::HashMap;
 use itertools::Itertools;
 
-#[aoc23::main(01)]
+#[aoc24::main(01)]
 fn main(input: &str) -> (usize, usize) {
   let (mut ids1, mut ids2): (Vec<usize>, Vec<usize>) = input
     .split('\n')
