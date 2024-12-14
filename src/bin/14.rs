@@ -13,7 +13,10 @@ fn step(pos: &mut Vec<(i32, i32)>, vel: &Vec<(i32, i32)>, width: i32, height: i3
   mean = (mean.0 / 500.0, mean.1 / 500.0);
   let var = pos
     .iter()
-    .fold((0.0, 0.0), |acc, p| (acc.0 + ((p.0 as f32) - mean.0).powf(2.0), acc.1 + ((p.1 as f32) - mean.1).powf(2.0)));
+    .fold((0.0, 0.0), |acc, p| (
+      acc.0 + ((p.0 as f32) - mean.0).powf(2.0),
+      acc.1 + ((p.1 as f32) - mean.1).powf(2.0)
+    ));
   (var.0 / 500.0, var.1 / 500.0)
 }
 
@@ -43,21 +46,22 @@ fn main(input: &str) -> (usize, usize) {
       ((p_x, p_y), (v_x, v_y))
     })
     .unzip();
-  let mut var0 = (0, 0);
+
+  let mut start = (0, 0);
   for i in 1..=103 {
     // x and y variance both have cycles of length width / height respectively, find the starting points
     let var = step(&mut pos, &vel, width, height);
-    if var.0 < 400.0 { var0.0 = i; }
-    if var.1 < 400.0 { var0.1 = i; }
+    if var.0 < 400.0 { start.0 = i; }
+    if var.1 < 400.0 { start.1 = i; }
   }
 
   // Solve x0 + k_x * width == y0 + k_y * height for integer k_x, k_y
-  let mut diff = var0.0 - var0.1;
+  let mut diff = start.0 - start.1;
   let mut k = 0;
   while diff < 0 || diff % 2 != 0 {
     diff += width;
     k += 1;
   };
 
-  (quad_counts.into_iter().fold(1, |acc, x| acc * x), (var0.0 + (k + diff / 2) * width) as usize)
+  (quad_counts.into_iter().fold(1, |acc, x| acc * x), (start.0 + (k + diff / 2) * width) as usize)
 }
